@@ -1,6 +1,7 @@
-from flask import jsonify, Blueprint
+from flask import Blueprint, request, jsonify
 import json
 from src.models.models import songs
+from src import db
 
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
@@ -25,6 +26,13 @@ bp = Blueprint('songs', __name__)
 
 @bp.route('/')
 def index():
-    songs1 = songs.query.all()
-    sol = json.dumps(songs1, cls=AlchemyEncoder)
+    print(request.args)
+    all_songs = songs.query.all()
+    sol = json.dumps(all_songs, cls=AlchemyEncoder)
+    return sol
+
+@bp.route('/view/<string:title>', methods = ['GET'])
+def view(title):
+    song = songs.query.filter(songs.title == str(title)).first()
+    sol = json.dumps(song, cls=AlchemyEncoder)
     return sol

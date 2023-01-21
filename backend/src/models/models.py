@@ -1,6 +1,5 @@
 from src import db
 from sqlalchemy import inspect
-
 class songs(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     song_id = db.Column(db.String, primary_key=True)
