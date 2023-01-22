@@ -17,7 +17,6 @@ const SongsContainer = () => {
   useEffect(() => {
     fetchSongs(page, pageLimit).then(res => {
       let { data = '', ...args } = res
-      data = JSON.parse(data)
       setPageConfig(args);
       setSongsData(data);
     }).catch((err) => { throw (err) });

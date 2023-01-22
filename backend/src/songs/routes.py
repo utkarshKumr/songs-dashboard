@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
+from sqlalchemy.ext.declarative import DeclarativeMeta
 import json
 from src.models.models import songs
 from src import db
 import math
-from sqlalchemy.ext.declarative import DeclarativeMeta
 
 class AlchemyEncoder(json.JSONEncoder):
 
@@ -31,19 +31,20 @@ def index():
     count = songs.query.count()
     all_songs = songs.query.paginate(page=page, per_page=per_page).items
     sol = json.dumps(all_songs, cls=AlchemyEncoder)
+
     next_ = count>(page*per_page)
-    return {"data": sol, "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
+    return {"data": json.loads(sol), "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
 
 @bp.route('/update_star_rating/<string:song_id>', methods = ['PUT'])
 def update_star_rating(song_id):
     data = request.data
     data = json.loads(data)
-    star_rating = data['star_rating']
+    star_rating = int(data['star_rating'])
     song = songs.query.filter(songs.song_id == str(song_id)).first()
-    song.star_rating = star_rating
+    setattr(song,'star_rating', star_rating)
+    db.session.merge(song)
     db.session.commit()
-    sol = json.dumps(song, cls=AlchemyEncoder)
-    return sol
+    return {}
 
 @bp.route('/view/<string:title>', methods = ['GET'])
 def view(title):

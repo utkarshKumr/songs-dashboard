@@ -3,7 +3,7 @@ from src.models.models import songs
 import json
 
 def insert_dummy_data():
-    app = init_app()
+    app = init_app(True)
     from src import db
     with app.app_context():
         json_file = open('src/database/playlist.json')
