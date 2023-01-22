@@ -1,31 +1,34 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import { Rating } from 'react-simple-star-rating'
+
 import useSortableData from '../../hooks/sortTableData';
+
 import './style.css';
 
 const SongsTable = ({ data = [] }) => {
-    const { items, requestSort, sortConfig} = useSortableData(data);
+    const { items, requestSort, sortConfig } = useSortableData(data);
 
     const getClassNamesFor = (name) => {
         if (!sortConfig) {
-          return;
+            return;
         }
         return sortConfig.key === name ? sortConfig.direction : undefined;
-      };
+    };
 
     return (
         <Table striped bordered hover>
             <thead>
                 <tr>
-                    <th>            
+                    <th>
                         <button
-                        type="button"
-                        onClick={() => requestSort('id')}
-                        className={getClassNamesFor('id')}
-                    >
-                        index
-                    </button>
-                    
+                            type="button"
+                            onClick={() => requestSort('id')}
+                            className={getClassNamesFor('id')}
+                        >
+                            index
+                        </button>
+
                     </th>
                     <th>                        <button
                         type="button"
@@ -84,14 +87,14 @@ const SongsTable = ({ data = [] }) => {
                         onClick={() => requestSort('num_sections')}
                         className={getClassNamesFor('num_sections')}
                     >
-Number of sections
+                        Number of sections
                     </button></th>
                     <th>                        <button
                         type="button"
                         onClick={() => requestSort('num_segments')}
                         className={getClassNamesFor('num_segments')}
                     >
-Number of segments
+                        Number of segments
                     </button></th>
                     <th>Star rating</th>
                 </tr>
@@ -115,7 +118,9 @@ Number of segments
                                 <td>{duration_ms}</td>
                                 <td>{num_sections}</td>
                                 <td>{num_segments}</td>
-                                <td>{star_rating}</td>
+                                <td>
+                                    <Rating onClick={() => { }} initialValue={star_rating} />
+                                </td>
 
                             </tr>
                         )

@@ -7,8 +7,10 @@ import './style.css';
 const SongsContainer = () => {
   const pageLimit = 10;
   const [searchParams, setSearchParams] = useSearchParams();
+  
   let page = searchParams.get('page') || 1;
   page = parseInt(page)
+
   const [songsData, setSongsData] = useState([]);
   const [pageConfig, setPageConfig] = useState({page: page, next: false, pageLimit: pageLimit, totalPages: 0});
 
