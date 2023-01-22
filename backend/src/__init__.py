@@ -1,12 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 # Database setup
 db = SQLAlchemy()
 
 def init_app():
     app = Flask(__name__)
-    
+    CORS(app)
     # app.config.from_object('src.config.Config') 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vivpro_project.db'
     app.config['SECRET_KEY'] = "check"
@@ -17,5 +18,4 @@ def init_app():
         db.create_all()
         from src.songs.routes import bp as songs_bp
         app.register_blueprint(songs_bp)
-        
         return app
