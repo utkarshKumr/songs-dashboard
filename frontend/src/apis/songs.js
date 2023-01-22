@@ -9,4 +9,4 @@ async function fetchSongs(page, pageSize) {
 
 export {
     fetchSongs
-};
+}

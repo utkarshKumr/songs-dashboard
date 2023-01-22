@@ -28,13 +28,11 @@ bp = Blueprint('songs', __name__)
 def index():
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 10, type=int)
-    # all_songs = songs.query.all()
-    # sol = json.dumps(all_songs, cls=AlchemyEncoder)
-    # return sol
-
+    count = songs.query.count()
     all_songs = songs.query.paginate(page=page, per_page=per_page).items
     sol = json.dumps(all_songs, cls=AlchemyEncoder)
-    return sol
+    next_ = count>(page*per_page)
+    return {"data": sol, "next": next_, "page": page}
 
 @bp.route('/view/<string:title>', methods = ['GET'])
 def view(title):
