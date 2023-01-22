@@ -6,7 +6,21 @@ async function fetchSongs(page, pageSize) {
     return songs;
   }
 
+async function updateStarRating(song_id, star_rating){
+    let url = BASE_URL+`/update_star_rating/${song_id}`;
+    try{
+        const res = fetch(url,{method:'PUT', body: JSON.stringify({star_rating})});
+        const data = await res.json();
+        return data
+    } catch (e) {
+        return e;
+    }
+}
+
+
+
 
 export {
-    fetchSongs
+    fetchSongs,
+    updateStarRating
 }

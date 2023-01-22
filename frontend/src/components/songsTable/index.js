@@ -6,7 +6,7 @@ import useSortableData from '../../hooks/sortTableData';
 
 import './style.css';
 
-const SongsTable = ({ data = [] }) => {
+const SongsTable = ({ data = [], updateStarRatingCaller }) => {
     const { items, requestSort, sortConfig } = useSortableData(data);
 
     const getClassNamesFor = (name) => {
@@ -119,7 +119,7 @@ const SongsTable = ({ data = [] }) => {
                                 <td>{num_sections}</td>
                                 <td>{num_segments}</td>
                                 <td>
-                                    <Rating onClick={() => { }} initialValue={star_rating} />
+                                    <Rating onClick={(rate) => {updateStarRatingCaller(song_id, rate)}} initialValue={star_rating} />
                                 </td>
 
                             </tr>

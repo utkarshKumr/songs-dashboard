@@ -34,8 +34,21 @@ def index():
     next_ = count>(page*per_page)
     return {"data": sol, "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
 
+@bp.route('/update_star_rating/<string:song_id>', methods = ['PUT'])
+def update_star_rating(song_id):
+    data = request.data
+    data = json.loads(data)
+    star_rating = data['star_rating']
+    song = songs.query.filter(songs.song_id == str(song_id)).first()
+    song.star_rating = star_rating
+    db.session.commit()
+    sol = json.dumps(song, cls=AlchemyEncoder)
+    return sol
+
 @bp.route('/view/<string:title>', methods = ['GET'])
 def view(title):
     song = songs.query.filter(songs.title == str(title)).first()
     sol = json.dumps(song, cls=AlchemyEncoder)
     return sol
+
+
