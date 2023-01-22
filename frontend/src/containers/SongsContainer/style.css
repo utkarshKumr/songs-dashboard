@@ -1,0 +1,14 @@
+.paginationButtonsContainer {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+}
+.paginationButtonsContainer .paginationButtonsInternal{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.paginationButtonsContainer .paginationButtonsInternal span{
+    margin: 20px;
+}

@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 import json
 from src.models.models import songs
 from src import db
-
+import math
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
 class AlchemyEncoder(json.JSONEncoder):
@@ -32,7 +32,7 @@ def index():
     all_songs = songs.query.paginate(page=page, per_page=per_page).items
     sol = json.dumps(all_songs, cls=AlchemyEncoder)
     next_ = count>(page*per_page)
-    return {"data": sol, "next": next_, "page": page}
+    return {"data": sol, "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
 
 @bp.route('/view/<string:title>', methods = ['GET'])
 def view(title):
