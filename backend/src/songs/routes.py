@@ -45,7 +45,8 @@ def update_star_rating(song_id):
     setattr(song,'star_rating', star_rating)
     db.session.merge(song)
     db.session.commit()
-    return {}
+    sol = json.dumps(song, cls=AlchemyEncoder)
+    return sol
 
 # Fetch song by title API.
 @bp.route('/view/<string:title>', methods = ['GET'])

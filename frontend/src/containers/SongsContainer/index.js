@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
+
 import { fetchSongs, updateStarRating } from '../../apis/songs';
 import ScatterChart from '../../components/Charts/scatterChart'
 import HistogramChart from '../../components/Charts/histogramChart';
 import SongsTable from '../../components/songsTable';
 import Header from '../../components/Header';
+import ExportSongsAsCSV from '../../components/ExportSongsAsCSV';
 import {SONG_DETAILS_PAGE_URL} from '../../urls/frontendUrls';
 import './style.css';
+
 const SongsContainer = () => {
   const pageLimit = 10;
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,11 +38,10 @@ const SongsContainer = () => {
     navigate(`/${SONG_DETAILS_PAGE_URL}/${songTitle}`);
   }
 
-
   return (
-    <div class="container-layout">
+    <div className="container-layout">
       <Header headerTitle='Dashboard' onSearch={onSearch}/>
-      <div class="chart-container-top">
+      <div className="chart-container-top">
         <div className='chartChild'><ScatterChart data={songsData} xKey={'id'} yKey={'danceability'} chartHeading={'Song ID vs Danceability'} /></div>
         <div className='chartChild'><HistogramChart data={songsData} xKey={'title'} yKey={'duration_ms'} chartHeading={'Song vs Duration'} legendHeading='Song duration (seconds)'
           chartColor="green"
@@ -48,6 +50,7 @@ const SongsContainer = () => {
         </div>
       <div className='tableAndPaginationAndLowerGraphs'>
       <div className='tableAndPaginationContainer'>
+      <ExportSongsAsCSV data={songsData} fileName={`Songs(${pageConfig.page} / ${pageConfig.totalPages}).csv`}/>
         <div className='tableContainer'>
           <SongsTable data={songsData} updateStarRatingCaller={updateStarRatingCaller} />
         </div>
@@ -63,7 +66,7 @@ const SongsContainer = () => {
           </div>
         </div>
       </div>
-      <div class="chart-container">
+      <div className="chart-container">
         <div className='chartChild'><HistogramChart data={songsData} xKey={'title'} yKey={'acousticness'} chartHeading={'Song vs Acousticness'} legendHeading='Acousticness'
           chartColor="blue"
         /></div>
