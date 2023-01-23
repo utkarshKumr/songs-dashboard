@@ -5,7 +5,7 @@
 1. ```cd backend```
 2. ```pip install -r requirements.txt```
 3. ```python insert.py``` - to migrate the data
-4. ```python main.py``` - it will run the backend at localhost:5000
+4. ```python main.py``` - it will run the backend at ```localhost:5000```
 
 ## Steps for frontend
 1. ```cd frontend```
