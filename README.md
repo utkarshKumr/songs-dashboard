@@ -1,4 +1,4 @@
-# vivproapp
+# Songs Dashboard
 
 ## Steps for backend
 
@@ -17,3 +17,4 @@
 1. Implemented pagination in API.
 2. Implemented star rating - frontend and backend (PUT API call).
 3. All the charts are implemented in the frontend.
+4. Table is horizontally scrollable.
