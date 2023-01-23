@@ -1,8 +1,7 @@
 from src import db
-from sqlalchemy import inspect
 class songs(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    song_id = db.Column(db.String)
+    song_id = db.Column(db.String, unique = True)
     title = db.Column(db.String)
     danceability = db.Column(db.Float)
     energy = db.Column(db.Float)
@@ -26,6 +25,3 @@ class songs(db.Model):
         self.num_sections = num_sections
         self.num_segments = num_segments
         self.star_rating = star_rating
-
-    def as_dict(self):
-        return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }

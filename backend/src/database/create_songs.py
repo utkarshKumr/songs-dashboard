@@ -22,6 +22,3 @@ def insert_dummy_data():
                             row['acousticness'], row['tempo'], row['duration_ms'], row['num_sections'], row['num_segments'], 0)
                 db.session.add(song)
             db.session.commit()
-
-# if __name__ == "__main__":
-#     insert_dummy_data()

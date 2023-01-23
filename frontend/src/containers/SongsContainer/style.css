@@ -1,13 +1,30 @@
-.paginationButtonsContainer {
-    display: inline-block;
-    width: 100%;
-    position: relative;
+.container-layout{
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    width: auto;
 }
-.paginationButtonsContainer .paginationButtonsInternal{
+.chart-container {
+    display: flex;
+    /* justify-content: center; */
+    margin-top: 100px;
+}
+
+.chart-container .chartChild{
+    /* flex-grow: 1; */
+    flex-basis: 50%;
+    margin: auto;
+}
+
+.paginationButtonsContainer {
+    display: flex;
+    justify-content: center;
+}
+/* .paginationButtonsContainer .paginationButtonsInternal{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-}
+} */
 
 .paginationButtonsContainer .paginationButtonsInternal span{
     margin: 20px;

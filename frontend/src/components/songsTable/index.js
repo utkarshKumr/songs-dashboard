@@ -39,6 +39,13 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                     </button></th>
                     <th>                        <button
                         type="button"
+                        onClick={() => requestSort('title')}
+                        className={getClassNamesFor('title')}
+                    >
+                        Title
+                    </button></th>
+                    <th>                        <button
+                        type="button"
                         onClick={() => requestSort('danceability')}
                         className={getClassNamesFor('danceability')}
                     >
@@ -110,6 +117,7 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                             <tr key={song_id}>
                                 <td>{id}</td>
                                 <td>{song_id}</td>
+                                <td>{title}</td>
                                 <td>{danceability}</td>
                                 <td>{energy}</td>
                                 <td>{mode}</td>
