@@ -8,9 +8,7 @@ db = SQLAlchemy()
 def init_app(drop = False):
     app = Flask(__name__)
     CORS(app)
-    # app.config.from_object('src.config.Config') 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vivpro_project.db'
-    app.config['SECRET_KEY'] = "check"
+    app.config.from_object('src.config.Config') 
     
     db.init_app(app)
     

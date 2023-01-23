@@ -5,8 +5,8 @@ from src.models.models import songs
 from src import db
 import math
 
+# for converting sqlalchemy object to json.
 class AlchemyEncoder(json.JSONEncoder):
-
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             fields = {}
@@ -24,6 +24,7 @@ class AlchemyEncoder(json.JSONEncoder):
 
 bp = Blueprint('songs', __name__)
 
+# Song listing API with pagination.
 @bp.route('/')
 def index():
     page = request.args.get('page', 1, type=int)
@@ -34,6 +35,7 @@ def index():
     next_ = count>(page*per_page)
     return {"data": json.loads(sol), "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
 
+# Update song rating PUT API.
 @bp.route('/update_star_rating/<string:song_id>', methods = ['PUT'])
 def update_star_rating(song_id):
     data = request.data
@@ -45,6 +47,7 @@ def update_star_rating(song_id):
     db.session.commit()
     return {}
 
+# Fetch song by title API.
 @bp.route('/view/<string:title>', methods = ['GET'])
 def view(title):
     song = songs.query.filter(songs.title == str(title)).first()
