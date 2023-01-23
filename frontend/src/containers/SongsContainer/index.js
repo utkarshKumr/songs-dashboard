@@ -40,9 +40,10 @@ const SongsContainer = () => {
     <div class="container-layout">
       <Header headerTitle='Dashboard' onSearch={onSearch}/>
       <div class="chart-container-top">
-        <div className='chartChild'><ScatterChart data={songsData} xKey={'id'} yKey={'danceability'} chartHeading={'Danceability'} /></div>
-        <div className='chartChild'><HistogramChart data={songsData} xKey={'title'} yKey={'duration_ms'} chartHeading={'Song vs Duration (ms)'} legendHeading='Song duration (ms)'
+        <div className='chartChild'><ScatterChart data={songsData} xKey={'id'} yKey={'danceability'} chartHeading={'Song ID vs Danceability'} /></div>
+        <div className='chartChild'><HistogramChart data={songsData} xKey={'title'} yKey={'duration_ms'} chartHeading={'Song vs Duration'} legendHeading='Song duration (seconds)'
           chartColor="green"
+          valueMultiplier = {1/1000}
         /></div>
         </div>
       <div className='tableAndPaginationAndLowerGraphs'>

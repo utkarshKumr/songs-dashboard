@@ -18,7 +18,7 @@ ChartJS.register(
     Legend
   );
 
-const HistogramChart = ({data = [], chartHeading, legendHeading, xKey, yKey, chartColor}) => {
+const HistogramChart = ({data = [], chartHeading, legendHeading, xKey, yKey, chartColor, valueMultiplier = 1}) => {
     const options = {
         responsive: true,
         plugins: {
@@ -42,7 +42,7 @@ const HistogramChart = ({data = [], chartHeading, legendHeading, xKey, yKey, cha
       })
 
       const values = data.map(item =>{
-        return item[yKey]
+        return item[yKey]*valueMultiplier
       })
 
       const finalData = {
