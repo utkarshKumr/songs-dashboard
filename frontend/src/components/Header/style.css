@@ -1,0 +1,29 @@
+.header {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.header h2{
+    margin: 0;
+    width: 60%;
+}
+
+.header .searchBox{
+    width: 40%;
+}
+.header .searchBox input{
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+    width: 80%;
+}
+
+.header .searchBox button{
+    width: calc(20% - 10px);
+    margin-left: 10px;
+    border-color: lightgrey;
+    border-radius: 5px;
+    padding: 5px;
+}

@@ -1,25 +1,27 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    white-space: nowrap;
   }
   
   thead th {
     text-align: left;
     border-bottom: 2px solid black;
   }
+
 thead button::after{
-    content: 'ar';
+    content: '\2195';
     display: inline-block;
     margin-left: 1em;
 }
 thead button.ascending::after {
-    content: '👇';
+    content: '\2193';
     display: inline-block;
     margin-left: 1em;
   }
   
   thead button.descending::after {
-    content: '☝️';
+    content: '\2191';
     display: inline-block;
     margin-left: 1em;
   }
@@ -30,6 +32,7 @@ thead button.ascending::after {
     font-family: inherit;
     font-weight: 700;
     font-size: inherit;
-    padding: 0.5em;
-    margin-bottom: 1px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
   }

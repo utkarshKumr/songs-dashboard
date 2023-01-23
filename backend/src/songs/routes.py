@@ -31,7 +31,6 @@ def index():
     count = songs.query.count()
     all_songs = songs.query.paginate(page=page, per_page=per_page).items
     sol = json.dumps(all_songs, cls=AlchemyEncoder)
-
     next_ = count>(page*per_page)
     return {"data": json.loads(sol), "next": next_, "page": page, "pageLimit": per_page, "totalPages":math.ceil(count/per_page)}
 
@@ -50,6 +49,8 @@ def update_star_rating(song_id):
 def view(title):
     song = songs.query.filter(songs.title == str(title)).first()
     sol = json.dumps(song, cls=AlchemyEncoder)
-    return sol
+    if song:
+        return sol 
+    return {"message": "This song does not exist!"}
 
 

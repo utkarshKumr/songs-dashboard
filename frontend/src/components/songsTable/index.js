@@ -44,6 +44,7 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                     >
                         Title
                     </button></th>
+                    <th>Star rating</th>
                     <th>                        <button
                         type="button"
                         onClick={() => requestSort('danceability')}
@@ -103,7 +104,7 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                     >
                         Number of segments
                     </button></th>
-                    <th>Star rating</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -118,6 +119,9 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                                 <td>{id}</td>
                                 <td>{song_id}</td>
                                 <td>{title}</td>
+                                <td>
+                                    <Rating onClick={(rate) => {updateStarRatingCaller(song_id, rate)}} initialValue={star_rating} />
+                                </td>
                                 <td>{danceability}</td>
                                 <td>{energy}</td>
                                 <td>{mode}</td>
@@ -126,9 +130,6 @@ const SongsTable = ({ data = [], updateStarRatingCaller }) => {
                                 <td>{duration_ms}</td>
                                 <td>{num_sections}</td>
                                 <td>{num_segments}</td>
-                                <td>
-                                    <Rating onClick={(rate) => {updateStarRatingCaller(song_id, rate)}} initialValue={star_rating} />
-                                </td>
 
                             </tr>
                         )

@@ -1,20 +1,42 @@
 .container-layout{
     display: flex;
     flex-direction: column;
-    margin: 100px;
+    margin: 20px 50px;
     width: auto;
+}
+.container-layout .tableAndPaginationAndLowerGraphs{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.container-layout .tableAndPaginationContainer{
+    width: 65%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px;
+}
+.container-layout .tableContainer{
+    overflow-x: scroll;
 }
 .chart-container {
     display: flex;
     /* justify-content: center; */
-    margin-top: 100px;
+    flex-direction: column;
+    width: calc(35% - 10px);
+    margin-left: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px;
 }
 
-.chart-container .chartChild{
-    /* flex-grow: 1; */
-    flex-basis: 50%;
+.chart-container-top{
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 10px;
+}
+.chart-container-top .chartChild{
+    flex-basis: 33.33%;
     margin: auto;
 }
+
 
 .paginationButtonsContainer {
     display: flex;

@@ -17,7 +17,7 @@ async function updateStarRating(song_id, star_rating) {
     }
 }
 
-async function viewSongDetails(title) {
+async function getSongDetails(title) {
     let url = BASE_URL + `/${VIEW_SONG_DETAILS}/${title}`;
     try {
         const response = await fetch(url);
@@ -31,5 +31,5 @@ async function viewSongDetails(title) {
 export {
     fetchSongs,
     updateStarRating,
-    viewSongDetails
+    getSongDetails
 }

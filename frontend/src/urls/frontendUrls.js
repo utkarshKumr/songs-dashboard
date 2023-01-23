@@ -1,0 +1,1 @@
+export const SONG_DETAILS_PAGE_URL = 'view';

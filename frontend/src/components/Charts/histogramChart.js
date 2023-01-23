@@ -33,7 +33,12 @@ const HistogramChart = ({data = [], chartHeading, legendHeading, xKey, yKey, cha
       };
 
       const labels = data.map(item =>{
-        return item[xKey]
+        let label = item[xKey]
+        if (typeof(label)=='string' && label.length>5){
+          label = label.slice(0,6)+'..';
+        }
+
+        return label
       })
 
       const values = data.map(item =>{
