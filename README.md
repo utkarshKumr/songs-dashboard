@@ -14,7 +14,7 @@
 4. If you want to change the *backend* endpoint, update ```BASE_URL``` in ```frontend/src/urls/index```. It is pointed to ```localhost:5000``` by default.
 
 ## Tech Stack
-Frontend - Javascript, React.js.
+Frontend - Javascript, React.js. </br>
 Backend - Python, Flask, Flask-SQLAlchemy
 
 # Highlights
